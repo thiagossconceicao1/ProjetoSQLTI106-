@@ -51,3 +51,9 @@ insert into tbUsuarios(nome,senha) values('carlos','654321');
 -- visualizando os registros das tabelas 
 select * from tbFuncionarios;
 select * from tbUsuarios;
+
+-- alterando os registros das tabelas 
+update tbUsuarios set senha = '89562356' where codusu = 1;
+
+select * from tbUsuarios;	
+
