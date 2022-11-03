@@ -1,63 +1,113 @@
 -- apagar o banco de dados
 drop database dbloja;
 
--- criando banco de dados 
+-- criando banco de dados
 create database dbloja;
 
--- acessando o banco de dados 
-use dbloja;
-
---visualizando o banco de dados 
+-- visualizando o banco de dados
 show databases;
 
--- visualizando as tabelas no banco de dados
-show tables;
+-- acessando o banco de dados
+use dbloja;
 
--- criando as tabelas para o banco de dados 
+-- criando as tabelas para o banco de dados
 create table tbFuncionarios(
 codfunc int auto_increment,
 nome varchar(50),
-email varchar (50),
-cpf char (14),
-tel char (10),
+email varchar(50),
+cpf char(14),
+tel char(10),
 primary key(codfunc)
 );
 
 create table tbUsuarios(
 codusu int auto_increment,
 nome varchar(15),
-senha varchar (14),
+senha varchar(14),
 primary key(codusu)
 );
 
--- visualizando as tabelas para o banco de daods 
+create table tbProdutos(
+codProd int auto_increment,
+descricao varchar(50),
+preco decimal(9,2),
+validade date,
+quantidade int,
+tipo varchar(10),
+primary key(codProd)
+);
+
+-- visualizando as tabelas no banco de dados
 show tables;
 
--- visualizando a estrutura das tabelas 
+-- visualizando a estrutura das tabelas
 desc tbFuncionarios;
 desc tbUsuarios;
 
--- inserindo valores nas tabelas 
+-- inserindo valores nas tabelas
 insert into tbFuncionarios(nome,email,cpf,tel)
-values('wosvaldo','wosvaldoocachorro@hotmail.com','852.741.963.89','94002-8922');
+values('José da Cunha','jose.cunha@hotmail.com','258.247.256-87',
+'97854-8752');
 
 insert into tbFuncionarios(nome,email,cpf,tel)
-values('carlos','carlosocachorro@hotmail.com','258.147.369.98','98922-4002');
+values('Maria da Silva','maria.silva@hotmail.com','254.258.963-77',
+'98741-5824');
 
-insert into tbUsuarios(nome,senha) values('wosvaldo','123456');
+insert into tbUsuarios(nome,senha)values('maria.silva','123456');
 
-insert into tbUsuarios(nome,senha) values('carlos','654321');
+insert into tbUsuarios(nome,senha)values('jose.cunha','654321');
 
--- visualizando os registros das tabelas 
+
+insert into tbProdutos(descricao,preco,validade,quantidade,tipo)
+values('Banana',20.50,'2022-11-07',12,'duzia');
+
+insert into tbProdutos(descricao,preco,validade,quantidade,tipo)
+values('Melancia',30.00,'2022-11-30',1,'unidade');
+
+insert into tbProdutos(descricao,preco,validade,quantidade,tipo)
+values('Morango',25.25,'2022-11-08',1,'caixa');
+
+insert into tbProdutos(descricao,preco,validade,quantidade,tipo)
+values('Morango',10.50,'2022-11-08',1,'caixa');
+
+insert into tbProdutos(descricao,preco,validade,quantidade,tipo)
+values('Morango',12.38,'2022-11-08',1,'caixa');
+
+insert into tbProdutos(descricao,preco,validade,quantidade,tipo)
+values('Laranja',13.13,'2022-11-08',1,'saco');
+
+insert into tbProdutos(descricao,preco,validade,quantidade,tipo)
+values('Abacaxi',26.26,'2022-11-08',1,'unidade');
+
+-- visualizando os registros das tabelas
 select * from tbFuncionarios;
 select * from tbUsuarios;
 
--- alterando os registros das tabelas 
-update tbUsuarios set senha = '89562356' where codusu = 1;
+select * from tbProdutos;
 
-select * from tbUsuarios;	
+-- alterando os registros das tabelas
+update tbUsuarios set senha = '789658452' where codusu = 1;
 
--- excluindo os registros das tabelas 
-delete from tbUsuarios where codusu = 1;
-	
-select * from tbUsuarios;	
+select * from tbUsuarios;
+
+-- excluindo os registros das tabelas
+delete from tbUsuarios where codusu=2;
+
+select * from tbUsuarios;
+
+-- Busca por código
+
+select * from tbProdutos where codProd = 1;
+
+-- Busca por nome
+
+select * from tbProdutos
+where descricao like '%%'
+
+-- Tipos de like
+%nome
+nome%
+%nome%
+
+update tbProdutos set preco = preco * 1.10 
+	where preco > 11.00;.
